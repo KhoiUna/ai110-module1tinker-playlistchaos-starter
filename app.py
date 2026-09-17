@@ -212,7 +212,8 @@ def profile_sidebar():
 
     profile["favorite_genre"] = st.sidebar.selectbox(
         "Favorite genre",
-        options=["rock", "lofi", "pop", "jazz", "electronic", "ambient", "other"],
+        options=["rock", "lofi", "pop", "jazz",
+                 "electronic", "ambient", "other"],
         index=0,
     )
 
@@ -232,7 +233,8 @@ def add_song_sidebar():
     artist = st.sidebar.text_input("Artist")
     genre = st.sidebar.selectbox(
         "Genre",
-        options=["rock", "lofi", "pop", "jazz", "electronic", "ambient", "other"],
+        options=["rock", "lofi", "pop", "jazz",
+                 "electronic", "ambient", "other"],
     )
     energy = st.sidebar.slider("Energy", min_value=1, max_value=10, value=5)
     tags_text = st.sidebar.text_input("Tags (comma separated)")
@@ -276,7 +278,8 @@ def render_playlist(label, songs):
         st.write("No songs in this playlist.")
         return
 
-    query = st.text_input(f"Search {label} playlist by artist", key=f"search_{label}")
+    query = st.text_input(
+        f"Search {label} playlist by artist", key=f"search_{label}")
     filtered = search_songs(songs, query, field="artist")
 
     if not filtered:
